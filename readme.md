@@ -38,9 +38,10 @@ Then start the Apache server by typing:
 ```bash
 sudo /etc/init.d/apache2 start
 ```
-Then go to your browser and type in the URL : http://XXX/YYY/src/ where:
-XXX is your IP address:
-YYY is the name of your repertory containing "src" and "images".
+Then go to your browser and type in the URL : http://XXX/YYY/src/
+ where:
+- XXX is your IP address;
+- YYY is the name of your repertory containing "src" and "images".
 
 To know your IP adress, type: 
 ```bash
