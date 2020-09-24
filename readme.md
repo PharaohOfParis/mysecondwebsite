@@ -12,7 +12,8 @@ There are two folders:
 
 I did three ways of deployment (two locals and one global):
 
-- 1) local with PHP: 
+### local with PHP: 
+
 First install PHP:
 ```bash
 sudo apt install php
@@ -25,7 +26,8 @@ Then finish by going to your browser and type in the URL : http://localhost:8000
 
 Finally, after finishing working, to stop the PHP server, do Ctrl-C.
 
-- 2) local with Apache:
+### local with Apache:
+
 First install Apache:
 ```bash
 sudo apt-get install apache2
@@ -49,7 +51,7 @@ Finally, after finishing working, to stop the Apache server, type:
 ```bash
 sudo /etc/init.d/apache2 stop
 ```
-- 3) global with firebase:
+### lobal with firebase:
 
 Go to your browser and type in the URL: ...
 
