@@ -1,4 +1,26 @@
-.bd-placeholder-img {
+footer.blockquote-footer {
+    color: white;
+}
+
+blockquote {
+    color: red;
+    font-size: 1rem;
+}
+
+.titre {
+    font-size: 2rem;
+}
+
+#myCarousel {
+    margin-top: 26px;
+}
+
+i {
+    color: #cf4747
+}
+
+
+/* .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
     -webkit-user-select: none;
@@ -11,4 +33,12 @@
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
+} */
+
+
+/* @media (max-width: 768px) {
+    blockquote {
+        font-size: 1.5rem;
+    }
 }
+ */

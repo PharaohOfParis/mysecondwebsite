@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <nav class="navbar bg-dark">
             <a class="navbar-brand" href="home.php">
-                <img src="/images/bamzooka_logo.png" width="30" height="30" alt="Bamzooka Logo" loading="lazy">
+                <img src="./images/bamzooka_logo.png" width="30" height="30" alt="Bamzooka Logo" loading="lazy">
             </a>
         </nav>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
