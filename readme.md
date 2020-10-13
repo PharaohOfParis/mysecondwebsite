@@ -1,66 +1,152 @@
-# Bamzooka from Bootstrap Exemple Web Page
+# My Bamzooka from Bootstrap Exemple Web Page
 
-Still learning how to use Bootstap efficiently. My second job is to adapt an existing Bootstrap web page source code into my Bamzooka website. So I went to the Examples page of Bootstrap website and chose the Carousel one (https://getbootstrap.com/docs/4.5/examples/carousel). 
+## Description
+
+Hello, I'm still learning how to use **Bootstap efficiently**. My second job is to adapt an existing Bootstrap web page source code into my Bamzooka website. So I went to the **Examples Page** of Bootstrap website and chose the **Carousel** one (https://getbootstrap.com/docs/4.5/examples/carousel). Then I must host it on **Firebase**. 
+
+## Installation
+
+* First install **PHP**:
+ ``` bash
+ sudo apt install php
+ ```
+
+* Then install **Apache**:
+ ``` bash
+ sudo apt-get install apache2
+ ```
+
+* Finally install the **Firebase CLI**:
+ ``` bash
+ curl -sL https://firebase.tools | bash
+ ```
+ NB: For more details about Firebase configuration, see: https://firebase.google.com/docs/hosting/quickstart .
+
+## Getting Started
+
+### with Apache:
+
+Put your website folder in the following repertory: `/var/www/html` .
+
+### with Firebase hosting:
+
+Go to your repertory above `src` and `images` and type:
+``` bash
+firebase init hosting
+```
+Then follow the instructions.
 
 ## Usage
 
-There are two folders: 
-- the Images one with the two logos and the three Fontawesome images;
-- the Sources one with the PHP files (index, header and footer) and the CSS page.
+* To edit the code, go to the `src` folder, and then you can modify either the header( `header.php` ), footer( `footer.php` ), or the main page ( `index.php` ).
+
+* To add logos or images, put them in the `images` folder.
+
+* To see your changes, deploy your website in local either with PHP or with Apache. To do this, read the `Deployment` section below.
+
+* When your website is ready to be shown to the World Wide Web, put the `src` and `images` folders in the `public` folder.
 
 ## Deployment
 
-I did three ways of deployment (two locals and one global):
+I did three ways of deployment (2 locals and 1 global):
 
 ### local with PHP: 
 
-First install PHP:
-```bash
-sudo apt install php
-```
-Then go to the repertory containing "src" and "images" and type:
-```bash
-php -S localhost:8000
-```
-Then finish by going to your browser and type in the URL : http://localhost:8000/src
+1. First start the PHP server in the repertory above `src` and `images` by typing in a shell:
+ ``` bash
+ php -S localhost:8000
+ ```
 
-Finally, after finishing working, to stop the PHP server, do Ctrl-C.
+2. Then go to your browser and type in the URL : http://localhost:8000/src .
+
+3. Finally, after finishing working, to stop the PHP server, do Ctrl-C.
 
 ### local with Apache:
 
-First install Apache:
-```bash
-sudo apt-get install apache2
-``` 
-Then copy the repertory containing "src" and "images" and paste it to the following folder : /var/www/html .
+1. First start the Apache server by typing in a shell one of the 3 following commands: 
+ ``` bash
+ sudo /etc/init.d/apache2 start
+ ```
+ ``` bash
+ sudo service apache2 start
+ ```
+ or via systemd for Debian/Ubuntu Linux users:
+ ``` bash
+ sudo systemctl start apache2.service
+ ```
 
-Then start the Apache server by typing: 
-```bash
-sudo /etc/init.d/apache2 start
-```
-Then go to your browser and type in the URL : http://XXX/YYY/src/
+2. Then go to your browser and type in the URL: `http://{ipAdress}/{repertory}`
  where:
-- XXX is your IP address;
-- YYY is the name of your repertory containing "src" and "images".
+     - {ipAdress} is your IP address;
+     - {repertory} is the path name of your repertory containing `index.php` within the `/var/www/html` folder.
 
-To know your IP adress, type: 
-```bash
- hostname -I
-```
+     - NB1: To know your IP address, you can type in a shell: 
+     ``` bash
+     hostname -I
+     ```
+     Your IP address is the first group of numbers.
 
-Finally, after finishing working, to stop the Apache server, type:
-```bash
-sudo /etc/init.d/apache2 stop
-```
-### lobal with firebase:
+     - NB2: If you want to write a **specific URL** (e.g. `mubramaj.com` ) to have your localhost website (instead of `http://{ipAdress}/{repertory}` ), do the following:
+         1. Go to the repertory `/etc/apache2/sites-available/` and create a new file named `mubramaj.com.conf` in which you must insert:
+         ``` 
+         <VirtualHost *:80>
+         ServerName mubramaj.com
+         DocumentRoot /var/www/html/{repertory}
 
-Go to your browser and type in the URL: ...
+         <Directory /var/www/html/{repertory}>
+         Options Indexes FollowSymLinks Includes
+         AllowOverride All
+         Order allow,deny
+         Allow from all
+         </Directory>
+         </VirtualHost>
+         ```
+         2. Activate the virtual host by typing:
+         ``` bash
+         sudo a2ensite mubramaj.com.conf
+         sudo service apache2 reload
+         ```
+         3. Edit the `/etc/hosts` file by adding the line:
+         ``` 
+         127.0.0.1       mubramaj.com
+         ```
 
-## TODO
+3. Finally, after finishing working, to stop the Apache server, type:
+ ``` bash
+ sudo /etc/init.d/apache2 stop
+ ```
+ ``` bash
+ sudo service apache2 stop
+ ```
+ or via systemd for Debian/Ubuntu Linux users:
+ ``` bash
+ sudo systemctl stop apache2.service
+ ```
 
-Finishing the CSS page.
+### global with Firebase:
 
-## Last Update day:
+1. After finishing working in local, to deploy the website in global on Firebase, type:
+ ``` bash
+ firebase deploy --only hosting
+ ```
 
-09/24/20
+2. Then go to your browser and type in the URL one of the 2 following URL:
+     - https://bamzooka-adapted.web.app/
+     - https://bamzooka-adapted.firebaseapp.com/
 
+NB: If your work hasn't changed, you don't need to do the first step the next time you want to see your website. 
+
+## Contributing
+
+Any contributions or even suggestions are **greatly appreciated**. To contribute, do the following:
+
+1. Fork the Project
+2. Create your Suggestions Branch ( `git checkout -b Suggestions/AmazingSuggestion` )
+3. Commit your Changes ( `git commit -m 'Add some AmazingSuggestion'` )
+4. Push to the Branch ( `git push origin Suggestions/AmazingSuggestion` )
+5. Open a Pull Request
+
+## Authors and acknowledgment
+
+* Author:
+     - Mohamed Abdelkoddous - mohamed.abdelkoddous@metadot.com
